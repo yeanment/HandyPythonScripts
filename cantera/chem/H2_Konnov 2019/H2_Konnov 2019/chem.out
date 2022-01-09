@@ -1,0 +1,199 @@
+
+ CHEMKIN INTERPRETER OUTPUT: CHEMKIN-II Version 3.9  Aug. 1994
+                              DOUBLE PRECISION
+
+                          --------------------
+                          ELEMENTS     ATOMIC
+                          CONSIDERED   WEIGHT
+                          --------------------
+                           1. O       15.9994    
+                           2. N       14.0067    
+                           3. AR      39.9480    
+                           4. H       1.00797    
+                           5. HE      4.00260    
+                          --------------------
+ -------------------------------------------------------------------------------
+                          C
+                       P  H
+                       H  A
+                       A  R
+ SPECIES               S  G  MOLECULAR  TEMPERATURE  ELEMENT COUNT
+ CONSIDERED            E  E  WEIGHT     LOW    HIGH  O  N  AR H  HE 
+ -------------------------------------------------------------------------------
+   1. H                G  0    1.00797   200   6000   0  0  0  1  0
+   2. H2               G  0    2.01594   200   6000   0  0  0  2  0
+   3. O                G  0   15.99940   200   6000   1  0  0  0  0
+   4. O2               G  0   31.99880   200   6000   2  0  0  0  0
+   5. H2O              G  0   18.01534   200   6000   1  0  0  2  0
+   6. OH               G  0   17.00737   200   6000   1  0  0  1  0
+   7. H2O2             G  0   34.01474   200   6000   2  0  0  2  0
+   8. HO2              G  0   33.00677   200   5000   2  0  0  1  0
+   9. OX               G  0   15.99940   200   6000   1  0  0  0  0
+  10. OHX              G  0   17.00737   200   6000   1  0  0  1  0
+  11. O2X              G  0   31.99880   200   6000   2  0  0  0  0
+  12. O3               G  0   47.99820   200   6000   3  0  0  0  0
+  13. AR               G  0   39.94800   200   6000   0  0  1  0  0
+  14. HE               G  0    4.00260   200   6000   0  0  0  0  1
+  15. N2               G  0   28.01340   200   6000   0  2  0  0  0
+ -------------------------------------------------------------------------------
+
+
+
+                                                      (k = A T**b exp(-E/RT))
+      REACTIONS CONSIDERED                              A        b        E
+
+   1. H+H+M=H2+M                                    7.00E+17   -1.0        0.0
+         H2               Enhanced by    0.000E+00
+         N2               Enhanced by    0.000E+00
+         H                Enhanced by    0.000E+00
+         H2O              Enhanced by    1.430E+01
+   2. H+H+H2=H2+H2                                  1.00E+17   -0.6        0.0
+   3. H+H+N2=H2+N2                                  5.40E+18   -1.3        0.0
+   4. H+H+H=H2+H                                    3.20E+15    0.0        0.0
+   5. O+O+M=O2+M                                    1.00E+17   -1.0        0.0
+         O                Enhanced by    2.880E+01
+         O2               Enhanced by    8.000E+00
+         N2               Enhanced by    2.000E+00
+         H2O              Enhanced by    5.000E+00
+         O3               Enhanced by    8.000E+00
+   6. O+H+M=OH+M                                    6.75E+18   -1.0        0.0
+         H2O              Enhanced by    5.000E+00
+   7. H2O+M=H+OH+M                                  6.06E+27   -3.3   120770.0
+         H2O              Enhanced by    0.000E+00
+         H2               Enhanced by    3.000E+00
+         N2               Enhanced by    2.000E+00
+         O2               Enhanced by    1.500E+00
+         HE               Enhanced by    1.100E+00
+   8. H2O+H2O=H+OH+H2O                              1.00E+26   -2.4   120160.0
+   9. H+O2(+M)=HO2(+M)                              4.66E+12    0.4        0.0
+      Low pressure limit:  0.12250E+20 -0.12000E+01  0.00000E+00
+      TROE centering:      0.50000E+00  0.10000E+01  0.10000E+11
+         AR               Enhanced by    7.200E-01
+         H2O              Enhanced by    1.660E+01
+         O2               Enhanced by    1.000E+00
+         H2               Enhanced by    1.500E+00
+         HE               Enhanced by    5.700E-01
+  10. H2O2(+M)=OH+OH(+M)                            2.00E+12    0.9    48750.0
+      Low pressure limit:  0.24900E+25 -0.23000E+01  0.48750E+05
+      TROE centering:      0.42000E+00  0.10000E+01  0.10000E+11
+         H2O              Enhanced by    7.500E+00
+         H2O2             Enhanced by    7.700E+00
+         O2               Enhanced by    1.200E+00
+         N2               Enhanced by    1.500E+00
+         HE               Enhanced by    6.500E-01
+         H2               Enhanced by    3.700E+00
+  11. O+H2=OH+H                                     5.08E+04    2.7     6292.0
+  12. H+O2=OH+O                                     1.04E+14    0.0    15286.0
+  13. H2+OH=H2O+H                                   2.14E+08    1.5     3450.0
+  14. OH+OH=H2O+O                                   2.67E+06    1.8    -1647.0
+  15. HO2+O=OH+O2                                   2.85E+10    1.0     -723.9
+  16. H+HO2=OH+OH                                   7.08E+13    0.0      300.0
+  17. H2O+O=H+HO2                                   2.20E+08    2.0    61600.0
+  18. H2+O2=H+HO2                                   7.40E+05    2.4    53500.0
+  19. HO2+OH=H2O+O2                                 7.00E+12    0.0    -1093.0
+      Declared duplicate reaction...
+  20. HO2+OH=H2O+O2                                 4.50E+14    0.0    10930.0
+      Declared duplicate reaction...
+  21. HO2+HO2=H2O2+O2                               1.03E+14    0.0    11040.0
+      Declared duplicate reaction...
+  22. HO2+HO2=H2O2+O2                               1.94E+11    0.0    -1409.0
+      Declared duplicate reaction...
+  23. H2O2+H=HO2+H2                                 5.02E+06    2.1     4300.0
+  24. H2O2+H=H2O+OH                                 2.03E+07    2.0     2620.0
+  25. H2O2+O=HO2+OH                                 9.55E+06    2.0     3970.0
+  26. H2O2+OH=HO2+H2O                               1.74E+12    0.0      318.0
+      Declared duplicate reaction...
+  27. H2O2+OH=HO2+H2O                               7.59E+13    0.0     7269.0
+      Declared duplicate reaction...
+  28. O2+O+AR=O3+AR                                 4.29E+17   -1.5        0.0
+      Declared duplicate reaction...
+  29. O2+O+AR=O3+AR                                 5.10E+21   -3.2        0.0
+      Declared duplicate reaction...
+  30. O2+O+M=O3+M                                   6.53E+17   -1.5        0.0
+         AR               Enhanced by    0.000E+00
+         O2               Enhanced by    9.500E-01
+         O3               Enhanced by    2.500E+00
+         O                Enhanced by    4.000E+00
+      Declared duplicate reaction...
+  31. O2+O+M=O3+M                                   1.33E+22   -3.3        0.0
+         AR               Enhanced by    0.000E+00
+         O2               Enhanced by    1.070E+00
+         O3               Enhanced by    2.500E+00
+         O                Enhanced by    4.000E+00
+      Declared duplicate reaction...
+  32. O3+O=O2+O2                                    4.82E+12    0.0     4094.0
+  33. O3+O=O2X+O2                                   1.44E+11    0.0     4094.0
+  34. O+O+M=O2X+M                                   7.00E+15   -1.0        0.0
+         O                Enhanced by    2.880E+01
+         O2               Enhanced by    8.000E+00
+         N2               Enhanced by    2.000E+00
+         H2O              Enhanced by    5.000E+00
+         O3               Enhanced by    8.000E+00
+  35. O2X+M=O2+M                                    1.80E+06    0.0      400.0
+         O                Enhanced by    0.000E+00
+         H                Enhanced by    0.000E+00
+         AR               Enhanced by    5.000E-03
+         HE               Enhanced by    5.000E-03
+         N2               Enhanced by    2.000E-03
+         H2O              Enhanced by    3.300E+00
+         H2               Enhanced by    2.500E+00
+  36. O2X+O=O2+O                                    7.80E+07    0.0        0.0
+  37. O2X+H=O2+H                                    4.00E+13    0.0     5030.0
+  38. O2X+O+M=O+O2+M                                3.60E+15    0.0        0.0
+         AR               Enhanced by    6.300E-01
+  39. O2X+O3=O2+O2+O                                3.13E+13    0.0     5644.0
+  40. OX+O2X=O+O2                                   6.03E+12    0.0        0.0
+  41. OX+O2=O+O2X                                   1.59E+13    0.0     -139.0
+  42. OX+O2=O+O2                                    2.81E+12    0.0     -139.0
+  43. OX+M=O+M                                      4.80E+11    0.0        0.0
+         O2               Enhanced by    0.000E+00
+         N2               Enhanced by    0.000E+00
+         O                Enhanced by    1.000E+01
+         H2O              Enhanced by    3.000E+00
+  44. OX+N2=O+N2                                    1.26E+13    0.0     -230.0
+  45. OX+O3=O2+O+O                                  7.23E+13    0.0        0.0
+  46. OX+O3=O2+O2                                   7.23E+13    0.0        0.0
+  47. H2+O2X=H+HO2                                  6.16E+05    2.3    31080.0
+  48. H+O2X=OH+O                                    3.50E+08    1.4     4508.0
+  49. H+O2X+M=HO2+M                                 9.89E+09    2.0     3360.0
+  50. HO2+OH=H2O+O2X                                2.14E+06    1.6     2180.0
+  51. OH+O2X=O+HO2                                  1.30E+13    0.0    34000.0
+  52. O3+H=OH+O2                                    8.43E+13    0.0      934.0
+  53. O3+OH=HO2+O2                                  1.00E+12    0.0     1870.0
+  54. O3+HO2=OH+O2+O2                               5.85E-04    4.6    -1377.0
+  55. H+HO2=H2O+OX                                  2.50E+12    0.0      300.0
+  56. OX+H2=OH+H                                    8.10E+13    0.0        0.0
+  57. OX+H2O=OH+OH                                  1.00E+14    0.0      -71.0
+  58. O+H+M=OHX+M                                   1.50E+13    0.0     5970.0
+         AR               Enhanced by    3.500E-01
+         H2O              Enhanced by    6.500E+00
+         O2               Enhanced by    4.000E-01
+         N2               Enhanced by    4.000E-01
+  59. OHX+O2=OH+O2                                  8.40E+11    0.5     -482.0
+  60. OHX+N2=OH+N2                                  1.08E+11    0.5    -1238.0
+  61. OHX+H2O=OH+H2O                                2.96E+12    0.5     -861.0
+  62. OHX+H2=OH+H2                                  3.54E+11    0.5     -444.0
+  63. OHX+OH=OH+OH                                  1.50E+12    0.5        0.0
+  64. OHX+H=OH+H                                    1.50E+12    0.5        0.0
+  65. OHX+O=OH+O                                    1.50E+12    0.5        0.0
+  66. OHX+AR=OH+AR                                  2.17E+10    0.5     2060.0
+  67. OHX+H2=H2O+H                                  2.60E+12    0.5     -444.0
+  68. OHX+O2=O3+H                                   2.52E+11    0.5     -482.0
+  69. OHX+O2=HO2+O                                  1.01E+12    0.5     -482.0
+  70. OHX+H2O=H2O2+H                                2.96E+12    0.5     -861.0
+  71. OHX=OH+hv                                     1.40E+06    0.0        0.0
+  72. H+O2+H=H2+O2                                  8.80E+22   -1.8      800.0
+  73. H+O2+H=OH+OH                                  4.00E+22   -1.8      800.0
+  74. H+O2+O=OH+O2                                  7.35E+22   -1.8      800.0
+  75. H+O2+OH=H2O+O2                                2.56E+22   -1.8      800.0
+
+  NOTE:  A units mole-cm-sec-K, E units cal/mole
+
+
+
+ NO ERRORS FOUND ON INPUT...CHEMKIN LINKING FILE WRITTEN.
+
+ WORKING SPACE REQUIREMENTS ARE
+    INTEGER:     1346
+    REAL:        1245
+    CHARACTER:     20

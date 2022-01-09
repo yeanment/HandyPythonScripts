@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "--Mech",  "./chem/DTUmech2019/DTU_DME_mech.xml",
+                "--Fuel",  "CH3OCH3",
+                "--EquivalenceRatio",  "1.0",
+                "--TransportModel", "Mix"
+           ],
+            "console": "integratedTerminal"
+        }
+    ]
+}

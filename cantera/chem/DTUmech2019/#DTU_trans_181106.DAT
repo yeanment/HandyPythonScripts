@@ -1,0 +1,387 @@
+! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^!
+! released on 2018/11/06
+! -------------------------------------------------------------------------------------------------------------------------- !
+! -------------------------------------------------------------------------------------------------------------------------- !
+! ------------------------------------------------ DTU mechanism, 2018  ---------------------------------------------------- !
+! ----------------------------------    For further information, contact:               ------------------------------------ !
+! ----------------------------------        | Peter Glarborg, pgl@kt.dtu.dk             ------------------------------------ !
+! ----------------------------------        | Hamid Hashemi, hah@kt.dtu.dk              ------------------------------------ !
+! ----------------------------------        | DTU Chemical Engineering                  ------------------------------------ !
+! ----- Ref:
+!
+! ----- H. Hashemi, J. M. Christensen, P. Glarborg, High-pressure pyrolysis and oxidation
+! ----- of ethanol, Fuel 218 (2018) 247-257.
+!
+! ----- H. Hashemi, J.G. Jacobsen, C.T. Rasmussen, J.M. Christensen, P. Glarborg,
+! ----- S. Gersen, M. Essen, H.B. Levinsky, S.J. Klippenstein, High-pressure
+! ----- oxidation of ethane, Combust. Flame 182 (2017) 150-166.
+!
+! ----- J. Gimenez-Lopez, C. Rasmussen, H. Hashemi, M. Alzueta, Y. Gao, P. Marshall,
+! ----- C. Goldsmith, P. Glarborg, Experimental and kinetic modeling study of C2H2
+! ----- oxidation at high pressure, Int. J. Chem. Kinet. 48 (2016) 724-738.
+!
+! ----- H. Hashemi, J. M. Christensen, S. Gersen, H. Levinsky, S. J. Klippenstein,
+! ----- P. Glarborg, High-pressure oxidation of methane, Combust. Flame 172 (2016) 349-364.
+!
+! ----- P. Marshall, P. Glarborg, Ab initio and kinetic modeling studies of formic acid
+! ----- oxidation, Proc. Combust. Inst. 35 (2015) 153-160.
+!
+! ----- H. Hashemi, J. M. Christensen, S. Gersen, P. Glarborg, Hydrogen oxidation at high
+! ----- pressure and intermediate temperatures: Experiments and kinetic modeling, Proc.
+! ----- Combust. Inst. 35 (2015) 553-560.
+!
+! ----- V. Aranda, J. M. Christensen, M. U. Alzueta, P. Glarborg, S. Gersen, Y. Gao,
+! ----- P. Marshall, Experimental and Kinetic Modeling Study of Methanol Ignition and
+! ----- Oxidation at High Pressure, Int. J. Chem. Kinet. 45 (2013) 283-294.
+!
+! ----- J. G. Lopez, C. L. Rasmussen, M. U. Alzueta, Y. Gao, P. Marshall, P. Glarborg,
+! ----- Experimental and kinetic modeling study of C2H4 oxidation at high pressure, Proc.
+! ----- Combust. Inst. 32 (2009) 367-375.
+!
+! ----- C. L. Rasmussen, J. G. Jakobsen, P. Glarborg, Experimental measurements and
+! ----- kinetic modeling of CH4/O2 and CH4/C2H6/O2 conversion at high pressure, Int. J.
+! ----- Chem. Kinet. 40 (2008) 778-807.
+!
+! ----- C. L. Rasmussen, J. Hansen, P. Marshall, P. Glarborg, Experimental measurements
+! ----- and kinetic modeling of CO/H2/O2/NO, conversion at high pressure, Int. J. Chem.
+! ----- Kinet. 40 (2008) 454-480.
+!
+! -------------------------------------------------------------------------------------------------------------------------- !
+
+! <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><><><><><><><>  !
+! <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><><><><><><><>  !
+
+
+H                  0   145.000     2.050     0.000     0.000     0.000
+    ! Chemkin database
+H2                 1    38.000     2.920     0.000     0.790   280.000
+    ! Chemkin database
+HE                 0    10.200     2.576     0.000     0.000     0.000  !(*)
+    ! Chemkin database
+O                  0    80.000     2.750     0.000     0.000     0.000
+    ! Chemkin database
+OH                 1    80.000     2.750     0.000     0.000     0.000
+    ! Chemkin database
+H2O                2   572.400     2.605     1.844     0.000     4.000
+    ! Chemkin database
+N2                 1    97.530     3.621     0.000     1.760     4.000
+    ! Chemkin database
+O2                 1   107.400     3.458     0.000     1.600     3.800
+    ! Chemkin database
+HO2                2   107.400     3.458     0.000     0.000     1.000  !(*)
+    ! Chemkin database
+H2O2               2   107.400     3.458     0.000     0.000     3.800
+    ! Chemkin database
+AR                 0   136.500     3.330     0.000     0.000     0.000
+    ! Chemkin database
+
+
+!____________________________________________________________________!
+C                  0    71.400     3.298     0.000     0.000     0.000  !(*)
+    ! Chemkin database
+CH                 1    80.000     2.750     0.000     0.000     0.000
+    ! Chemkin database
+CH2                1   144.000     3.800     0.000     0.000     0.000
+    ! Chemkin database
+CH2(S)             1   144.000     3.800     0.000     0.000     0.000
+    ! Chemkin database
+CH3                1   144.000     3.800     0.000     0.000     0.000
+    ! Chemkin database
+CH4                2   141.400     3.746     0.000     2.600    13.000
+    ! Chemkin database
+CO                 1    98.100     3.650     0.000     1.950     1.800
+    ! Chemkin database
+HCO                2   498.000     3.590     0.000     0.000     0.000
+    ! Chemkin database
+CH2O               2   498.000     3.590     0.000     0.000     2.000
+    ! Chemkin database
+HCOH              2    313.0       3.6      0.000     0.000      1.000
+    ! ANSYS Workbench Properties Estimator
+CH3O               2   417.000     3.690     1.700     0.000     2.000
+    ! Chemkin database
+CH2OH              2   417.000     3.690     1.700     0.000     2.000
+    ! Chemkin database
+CH3OH              2   481.800     3.626     0.000     0.000     1.000 ! SVE
+    ! Chemkin database
+CO2                1   244.000     3.763     0.000     2.650     2.100
+    ! Chemkin database
+HOCO       2 353.3 3.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OCHO     2 440.2 4.4 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+HOCHO       2 352.9 3.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OO         2 396.7 4.1 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2OOH    2 337.0 4.0 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+HOCH2O    2 353.3 3.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OOH    2 337.0 4.0 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OCH2O2H  2 373.1 4.1 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+!____________________________________________________________________!
+
+C2                 1    97.530     3.621     0.000     1.760     4.000
+    ! Chemkin database
+C2H                1   209.000     4.100     0.000     0.000     2.500
+    ! Chemkin database
+C2H2               1   209.000     4.100     0.000     0.000     2.500
+    ! Chemkin database
+H2CC      2 315.1 3.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+C2H3               2   209.000     4.100     0.000     0.000     1.000  !(*)
+    ! Chemkin database
+C2H4               2   280.800     3.971     0.000     0.000     1.500
+    ! Chemkin database
+C2H5               2   252.300     4.302     0.000     0.000     1.500
+    ! Chemkin database
+C2H6               2   252.300     4.302     0.000     0.000     1.500
+    ! Chemkin database
+C2O                1   232.400     3.828     0.000     0.000     1.000 ! *
+    ! Chemkin database
+HCCO               2   150.000     2.500     0.000     0.000     1.000  !(*)
+    ! Chemkin database
+HCCOH              2   436.000     3.970     0.000     0.000     2.000
+    ! Chemkin database
+CH2CO              2   436.000     3.970     0.000     0.000     2.000
+    ! Chemkin database
+CHCHO   2 371.8 4.2 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CHCHOH  2 343.9 4.0 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+cC2H3O           2 367.9 4.1 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CO              2   436.000     3.970     0.000     0.000     2.000
+    ! Chemkin database
+CH2CHO  2 375.0 4.2 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CHO             2   436.000     3.970     0.000     0.000     2.000
+    ! Chemkin database
+    ! CH3CHO    2 375.0 4.2 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+cC2H4O             2 367.9 4.1 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2CHOH  2 396.3 4.3 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CH2O   2 396.3 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CHOH         2 396.3 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2CH2OH       2 396.3 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCH2       2 339.8 4.4 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CH2OH             2   362.6       4.53      0.000     0.000     1.000  !(sve)
+    ! Chemkin database
+    ! [CH3][CH2][OH]   2 396.3 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCH3     2 339.8 4.4 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OCHCO  2 417.5 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OCHCHO   2 417.5 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2CHOO 2 415.1 4.4 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3C(O)O    2 460.8 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCO  2 375.9 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2OCHO     2 375.9 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2CHOOH    2 415.1 4.4 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCHO  2 375.9 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3C(O)OH   2 460.8 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CH2OO     2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3CHOOH     2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2CH2OOH   2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3OCH2O 2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH2OCH2OH      2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3OCHOH          2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3CH2OOH     2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3OCH2OH   2 415.2 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CHOOCO             2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+    ! CHOOCO   2 395.1 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3CH2OCH3  2 359.6 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3CHOCH3 2 359.6 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH2CH2OCH3  2 359.6 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH3CH2OCH2  2 359.6 4.9 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH2CHOCH3   2 359.5 4.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+CH2CHOCH2 2 359.5 4.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+
+!____________________________________________________________________!
+CYOCH2OC*O         2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+OCHOCHO  2 410.7 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OCH2OCHO    2 448.2 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+HOCH2OCO    2 392.0 4.6 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OC*OO        2 356.8 4.5 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3C(O)OO       2 450.7 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3C(O)OOH      2 450.7 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+HOCH2CH2OO      2 430.8 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCH2OO   2 433.6 4.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2OCH2OOH      2 376.5 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OCH2OOH      2 376.5 4.7 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH2OC*OOOH  2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+OOCH2OCHO          2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+HOOCH2OC*O         2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+CH3OC*OOO          2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+HO2CH2OCHO      2 466.1 4.8 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+CH3OC*OOOH         2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+O*CHOC*OOOH        2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+O2CH2OCH2O2H        2 521.6 5.0 0.000 0.000 1.000
+    ! ANSYS Workbench Properties Estimator
+OOCH2OC*OOOH       2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+HOOCH2OC*OOO       2   435.2       4.662     2.7       0.0       1.0   ! WJP (FISHER ET AL 2000)
+    ! Dooley et al., Int J Chem Kinet 42 (2010) 527-549:
+
+CH3OCH2OOCH3       2   398.2       5.1     0.000     0.000       1.000
+    ! ANSYS Workbench Properties Estimator
+! //////////////////// END OF C2 + DME
+
+!____________________________________________________________________!
+!____________________________ C3 subset  ____________________________!
+!____________________________________________________________________!
+! Below is estimated with ANSYS Workbench Properties Estimator
+
+C3H2                             2   340.4     4.4       0       0       1
+cC3H2                            2   363.4     4.3       0       0       1
+C3H3                             2   340.7     4.4       0       0       1
+CH2CCH                           2   340.4     4.4       0       0       1
+CH2CCH2                          2   340.4     4.4       0       0       1
+CH3CCH                           2   340.7     4.4       0       0       1
+cC3H4                            2   363.4     4.3       0       0       1
+CH2CHCH2                         2   339.3     4.6       0       0       1
+CH3CHCH                          2   339.3     4.6       0       0       1
+CH3CCH2                          2   339.3     4.6       0       0       1
+cC3H5                            2   362.5     4.4       0       0       1
+C3H6                             2   339.3     4.6       0       0       1
+cC3H6                            2   362.5     4.4       0       0       1
+iC3H7                            2   339.3     4.8       0       0       1
+nC3H7                            2   339.3     4.8       0       0       1
+C3H8                             2   339.3     4.8       0       0       1
+CH2CCO                           2   390.9     4.6       0       0       1
+CHCCHO                           2   390.9     4.6       0       0       1
+C2H3CO                           2   388.8     4.7       0       0       1
+CHCHCHO                          2   388.8     4.7       0       0       1
+CH2CCHO                          2   388.8     4.7       0       0       1
+C2H3CHO                          2   388.8     4.7       0       0       1
+CH3CHCO                          2     354     4.4       0       0       1
+CH2CHCH2O                        2   414.8     4.8       0       0       1
+!propen1oxy
+!propen2oxy
+propen1oxy                       2   414.8     4.8       0       0       1
+    ! assumed equal to as CH2CHCH2O
+propen2oxy                       2   414.8     4.8       0       0       1
+    ! assumed equal to as CH2CHCH2O
+
+CH2CCH2OH                        2   414.8     4.8       0       0       1
+CH2C(OH)CH2                      2   417.3     4.8       0       0       1
+CH3C(OH)CH                       2   417.3     4.8       0       0       1
+CH3CH2CO                         2   388.5     4.9       0       0       1
+CH3C(O)CH2                       2   397.2     4.8       0       0       1
+CH3CHCHO                         2   388.5     4.9       0       0       1
+CH2CHCHOH                        2   414.8     4.8       0       0       1
+CH2CH2CHO                        2   414.8     4.8       0       0       1
+vinoxylmethyl                    2   359.5     4.8       0       0       1
+CH3CH2CHO                        2   388.5     4.9       0       0       1
+cC3H6O                           2   432.2     4.4       0       0       1
+CH2CHCH2OH                       2   414.8     4.8       0       0       1
+CH3CHCHOH                        2   424.9     4.8       0       0       1
+CH3C(O)CH3                       2   397.2     4.8       0       0       1
+cC2H3O-CH3                       2   382.5     4.6       0       0       1
+nC3H7O                           2   388.5     4.9       0       0       1
+iC3H7O                           2   417.5     4.9       0       0       1
+CH3CH2CHOH                       2   414.7     4.9       0       0       1
+CH3CHCH2OH                       2   414.7     4.9       0       0       1
+CH2CH2CH2OH                      2   414.7     4.9       0       0       1
+EFP                              2   414.7     4.9       0       0       1
+EFS                              2   394.7     4.9       0       0       1
+EFF                              2   394.7     4.9       0       0       1
+ME2J                             2   435.7     4.9       0       0       1
+MEMJ                             2   397.5       5       0       0       1
+OCHCH2CH2O                       2   459.9       5       0       0       1
+oxiranylmet                      2     454     4.7       0       0       1
+CH3COCH2O                        2     454     4.7       0       0       1
+CH3CH(CHO)O                      2   462.5       5       0       0       1
+CH2CHCH2OO                       2   462.5       5       0       0       1
+CHCHCH2OOH                       2   433.2     4.9       0       0       1
+EF                               2   433.2     4.9       0       0       1
+ME                               2   433.2     4.9       0       0       1
+CH2CHCH2OOH                      2   433.2     4.9       0       0       1
+CH3CHCHOOH                       2   443.2     4.9       0       0       1
+CH3C(CH2)OOH                     2   435.7     4.9       0       0       1
+nC3H7OO                          2   433.2       5       0       0       1
+iC3H7OO                          2   435.8       5       0       0       1
+CH2CH2CH2OOH                     2   433.2       5       0       0       1
+CH3CHCH2OOH                      2   433.2       5       0       0       1
+CH2CH(OOH)CH3                    2   435.8       5       0       0       1
+nC3H7OOH                         2   433.2       5       0       0       1
+iC3H7OOH                         2   433.2       5       0       0       1
+OCHCH2CH2OOH                     2   477.6     5.1       0       0       1
+cC2H3OCH2OOH                     2   471.8     4.9       0       0       1
+CH3COCH2OOH                      2   485.4     5.1       0       0       1
+CH3CHOOHCHO                      2   480.3     5.1       0       0       1
+HOOCCCOO*                        2   521.4     5.3       0       0       1
+HOOCC(C)OO*                      2   523.5     5.2       0       0       1
+HOOC(C)COO*                      2   523.5     5.2       0       0       1
+HOOCC(C*)OOH                     2   523.5     5.2       0       0       1
+CH2CH2OCH3                       2   359.6     4.9       0       0       1
+CHCC*O                           2   390.9     4.6       0       0       1
+CHCHCHO                          2   388.8     4.7       0       0       1
+CH*CCO                           2   355.6     4.3       0       0       1
+CH3CCO                           2   354       4.4       0       0       1
+C*CCHO                           2   390.9     4.6       0       0       1
+
+!___________________________ End of C3 subset  _____________________!
+END
