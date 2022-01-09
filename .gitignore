@@ -1,5 +1,6 @@
 # Some runtime generated data
 data/
+FailedAttempt/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

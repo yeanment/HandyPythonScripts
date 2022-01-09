@@ -13,6 +13,8 @@ import argparse
 plt.switch_backend('agg')
 plt.style.use('/mnt/d/Work/pythonscripts/matplotlib/styles/science.mplstyle')
 
+sys.path.append(os.getcwd() + "/..")
+sys.path.append(os.getcwd() + "/.")
 import utils
 
 if __name__ == "__main__":
@@ -32,7 +34,7 @@ if __name__ == "__main__":
     args = parse.parse_args()
     print(args)
 
-    Pin, Tin = 1.0 * ct.one_atm, 298.0  # 1 atm & 298 K
+    Pin, Tin = 1.0 * ct.one_atm, 600.0  # 1 atm & 298 K
     rxnmech = args.Mech[0]  # reaction mechanism file
     fuel = args.Fuel[0]
     phi = args.EquivalenceRatio[0]
@@ -60,10 +62,10 @@ if __name__ == "__main__":
     # Indicator of iteration and the latest flame still burning
     iter, iter_last_burning = 0, 0
     # Init iter
-    iter_Uin = 0.10  # m/s
+    iter_Uin = 1.0  # m/s
     halfWidth = 10.00e-3  # m
     # Umiform increase
-    delta_iter_Uin, delta_iter_Uin_factor = 0.05, 2.0
+    delta_iter_Uin, delta_iter_Uin_factor = 1.0, 2.0
     delta_iter_Uin_min = 0.001
     # Umiform increase
 
@@ -104,7 +106,7 @@ if __name__ == "__main__":
                 iter_Uin,
                 halfWidth,
                 restartFlag=restartFlag,
-                loglevel=0,
+                loglevel=1,
                 pathRootSave=pathRootSave)
 
             # Runtime progress output
@@ -153,8 +155,8 @@ if __name__ == "__main__":
     plt.xlabel(r'$a_{g}$ [1/s]')
     plt.ylabel(r'$T_{max}$ [K]')
     plt.tight_layout()
-    plt.savefig(pathRootSave + 'figure_T_max_a_g.png')
-    np.savetxt(pathRootSave + 'T_max_a_g.csv',
+    plt.savefig(pathRootSave + '/T_max_ag.png')
+    np.savetxt(pathRootSave + '/T_max_ag.csv',
                np.stack((ag_Array, Uin_Array, T_maxArray, xf_Array, Sc_Array),
                         axis=-1),
                delimiter=',')

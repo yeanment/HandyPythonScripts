@@ -165,7 +165,7 @@ def computeCFPremixedTwinFlame(gas,
         sim.set_refine_criteria(ratio=5.0, slope=0.2, curve=0.2, prune=0.2)
         sim.solve(loglevel=loglevel, refine_grid=True, auto=True)
         print("Data size of run 0:", len(sim.grid))
-        sim.set_refine_criteria(ratio=3.0, slope=0.01, curve=0.01, prune=0.001)
+        sim.set_refine_criteria(ratio=3.0, slope=0.05, curve=0.05, prune=0.02)
         sim.solve(loglevel=loglevel, auto=True)
         print("Data size of run 1:", len(sim.grid))
         T_max = np.max(sim.T)
