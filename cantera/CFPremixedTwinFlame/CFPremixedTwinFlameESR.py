@@ -28,26 +28,85 @@ if __name__ == "__main__":
     #     default = ['Air'], help='Oxidizer for the flame.')
     parse.add_argument('--EquivalenceRatio', action='store', nargs=1, type=float, \
         default = [5.1], help='Fuel:Oxid')
+    parse.add_argument('--Tin', action='store', nargs=1, type=float, \
+        default = [300.], help='Fuel:Oxid')
     parse.add_argument('--TransportModel', action='store', nargs=1, type=str, \
         default = ['Mix'], help='Transportmodel, e.g. Mix, Multi, UnityLeiws.')
 
     args = parse.parse_args()
     print(args)
 
-    Pin, Tin = 1.0 * ct.one_atm, 600.0  # 1 atm & 298 K
+    Pin, Tin = 1.0 * ct.one_atm, args.Tin[0]  # 1 atm & 298 K
     rxnmech = args.Mech[0]  # reaction mechanism file
     fuel = args.Fuel[0]
     phi = args.EquivalenceRatio[0]
     gas = ct.Solution(rxnmech)
     gas.TP = Tin, Pin
     gas.set_equivalence_ratio(phi, fuel, 'O2:1.0, N2:3.76', basis='mole')
-    comp = gas.mass_fraction_dict()
+    comp = gas.mole_fraction_dict()
 
-    pathRootSave = './data/CFPremixedTwinFlame/{0}-Air-phi_{1:05.2f}'.format(
-        fuel, phi)
+    pathRootSave = os.path.join(
+        './data/CFPremixedTwinFlame',
+        '{0}-Air-phi{1:05.2f}-{2}-Tu{3:.1f}'.format(fuel, phi,
+                                                    args.TransportModel[0],
+                                                    Tin))
+    if not os.path.exists(pathRootSave):
+        os.makedirs(pathRootSave)
+
     # Set up the problem
     gas = ct.Solution(rxnmech)
     gas.TPX = Tin, Pin, comp
+    print('// {0}/Air: phi = {1}'.format(fuel, phi))
+    print('// Mass fraction dict: {0}'.format(gas.mass_fraction_dict()))
+    print('// Mole fraction dict: {0}'.format(gas.mole_fraction_dict()))
+
+    gas.transport_model = args.TransportModel[0]
+    LeX = gas.thermal_conductivity / (gas.density_mass * gas.cp_mass *
+                                      gas.mix_diff_coeffs)
+    rhou = gas.density
+    gas.equilibrate('HP')
+    rhob = gas.density
+    print('// LeF = {0:.3f}, LeO = {1:.3f}'.format(
+        LeX[gas.species_index(fuel)], LeX[gas.species_index('O2')]))
+    print('// phou = {0:.3f}, rhob = {1:.3f}'.format(rhou, rhob))
+    print('// alpha = {0:.3f}, Tf = {1:.3f}.'.format(rhou / rhob, gas.T))
+
+    gas.TPX = Tin, Pin, comp
+    initial_grid = 5 * np.array(
+        [0.0, 0.0001, 0.0002, 0.0005, 0.001, 0.002, 0.005, 0.01], 'd')  # m
+    width = 20.e-3  # 10mm wide
+    tol_ss = [1.0e-6, 1.0e-10]  # [rtol atol] for steady-state problem
+    tol_ts = [1.0e-6, 1.0e-10]  # [rtol atol] for time stepping
+    loglevel = 0  # amount of diagnostic output (0 to 5)
+    refine_grid = True  # True to enable refinement, False to disable
+    sim = ct.FreeFlame(gas, initial_grid)
+    sim.flame.set_steady_tolerances(default=tol_ss)
+    sim.flame.set_transient_tolerances(default=tol_ts)
+    sim.soret_enabled = False
+    sim.max_time_step_count, sim.max_grid_points = 1E+6, 1E+5
+    gas.transport_model = args.TransportModel[0]
+    sim.transport_model = args.TransportModel[0]
+    if (sim.transport_model == 'Multi'):
+        sim.soret_enabled = True
+    sim.energy_enabled = True
+    sim.inlet.X, sim.inlet.T = comp, Tin
+    sim.set_max_jac_age(50, 50)  # Max number of times the Jacobian
+    # sim.set_time_step(0.1e-06, [2, 5, 10, 20, 80])  # Time steps (s)
+    sim.set_refine_criteria(ratio=3.0, slope=0.05, curve=0.05, prune=0.02)
+    sim.solve(loglevel, refine_grid)
+    sim.write_csv(os.path.join(pathRootSave,
+                               '{0}-Air-phi_{1:05.2f}.csv'.format(fuel, phi)),
+                  species='Y')
+    Sc = utils.computeConsumptionSpeed(sim)
+    deltaF = utils.computeFlameThickness(sim)
+    rho = np.zeros_like(sim.grid)
+    for n in range(sim.flame.n_points):
+        sim.set_gas_state(n)
+        rho[n] = sim.gas.density_mass
+    print('// SL = {0:.4f} m/s, Sc = {1:.4f} m/s, deltaF = {2:.4f} mm'.format(
+        sim.velocity[0], Sc, deltaF * 1000))
+    print('// rhou = {0:.4f}, rhob = {1:.4f}'.format(rho[0], rho[-1]))
+    utils.plotFlamePNG(sim, gas, pathRootSave)
 
     # Compute the extinction strain rates
     # Comute the Extinction strain rates
@@ -65,11 +124,12 @@ if __name__ == "__main__":
     iter_Uin = 1.0  # m/s
     halfWidth = 10.00e-3  # m
     # Umiform increase
-    delta_iter_Uin, delta_iter_Uin_factor = 1.0, 2.0
+    delta_iter_Uin, delta_iter_Uin_factor = 1, 2.0
     delta_iter_Uin_min = 0.001
     # Umiform increase
 
     # Initial for restartFile
+    gas.TPX = Tin, Pin, comp
     iter_Tmax, iter_posf, iter_ag, iter_Sc = utils.computeCFPremixedTwinFlame(
         gas,
         Pin,
@@ -85,7 +145,7 @@ if __name__ == "__main__":
     Uin_Array, xf_Array = [iter_Uin], [iter_posf]
 
     # extinction temperature
-    temperature_limit_extinction = 500
+    # temperature_limit_extinction = Tin + 100
     restartFlag = True
     while True:
         iter += 1
@@ -106,7 +166,7 @@ if __name__ == "__main__":
                 iter_Uin,
                 halfWidth,
                 restartFlag=restartFlag,
-                loglevel=1,
+                loglevel=0,
                 pathRootSave=pathRootSave)
 
             # Runtime progress output
@@ -155,8 +215,8 @@ if __name__ == "__main__":
     plt.xlabel(r'$a_{g}$ [1/s]')
     plt.ylabel(r'$T_{max}$ [K]')
     plt.tight_layout()
-    plt.savefig(pathRootSave + '/T_max_ag.png')
-    np.savetxt(pathRootSave + '/T_max_ag.csv',
+    plt.savefig(os.path.join(pathRootSave, 'T_max_ag.png'))
+    np.savetxt(os.path.join(pathRootSave, 'T_max_ag.csv'),
                np.stack((ag_Array, Uin_Array, T_maxArray, xf_Array, Sc_Array),
                         axis=-1),
                delimiter=',')

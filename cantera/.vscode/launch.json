@@ -16,6 +16,19 @@
                 "--TransportModel", "Mix"
            ],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Debug DME",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [         
+                "--Mech",  "./chem/DME_LuChen2015/DME_LuChen2015.xml",
+                "--Fuel",  "CH3OCH3",
+                "--EquivalenceRatio",  "1.0",
+                // "--TransportModel", "Mix"
+           ],
+            "console": "integratedTerminal"
         }
     ]
 }

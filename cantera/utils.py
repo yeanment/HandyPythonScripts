@@ -129,7 +129,7 @@ def computeCFPremixedTwinFlame(gas,
                             restartFlag=False,
                             pathRootSave='./data',
                             transportModel='Mix'):
-    temperature_limit_extinction = 400
+    temperature_limit_extinction = Tin + 10
 
     class FlameExtinguished(Exception):
         pass

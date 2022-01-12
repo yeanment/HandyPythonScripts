@@ -39,7 +39,7 @@ if __name__ == "__main__":
     gas = ct.Solution(rxnmech)
     gas.TP = Tin, Pin
     gas.set_equivalence_ratio(phi, fuel, 'O2:1.0, N2:3.76', basis='mole')
-    comp = gas.mass_fraction_dict()
+    comp = gas.mole_fraction_dict()
 
     pathRootSave = './data/CFPremixedTwinFlame/{0}-Air-phi_{1:05.2f}'.format(
         fuel, phi)

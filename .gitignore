@@ -1,6 +1,9 @@
 # Some runtime generated data
 data/
 FailedAttempt/
+CMakeBuild/
+tecio/
+tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
