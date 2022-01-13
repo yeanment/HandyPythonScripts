@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import cantera as ct
 import numpy as np
+import scipy, scipy.special
 import sys, os
 import matplotlib.pylab as plt
 
@@ -121,14 +122,14 @@ def saveFlameCSV(sim, pathSave):
 
 
 def computeCFPremixedTwinFlame(gas,
-                            Pin,
-                            Tin,
-                            Uin,
-                            halfWidth=10.0e-3,
-                            loglevel=1,
-                            restartFlag=False,
-                            pathRootSave='./data',
-                            transportModel='Mix'):
+                               Pin,
+                               Tin,
+                               Uin,
+                               halfWidth=10.0e-3,
+                               loglevel=1,
+                               restartFlag=False,
+                               pathRootSave='./data',
+                               transportModel='Mix'):
     temperature_limit_extinction = Tin + 10
 
     class FlameExtinguished(Exception):
@@ -158,7 +159,7 @@ def computeCFPremixedTwinFlame(gas,
     sim.soret_enabled = False
     sim.energy_enabled = True
     sim.transport_model = transportModel
-    if(sim.transport_model == 'Multi'):
+    if (sim.transport_model == 'Multi'):
         sim.soret_enabled = True
 
     try:
@@ -188,8 +189,9 @@ def computeCFPremixedTwinFlame(gas,
         sim.save(os.path.join(pathSave, 'data.xml'),
                  name='strPathu',
                  description='ag = ' + str(ag))
-        
-        print('// Tf = {0:.4f} K, a_g = {1:.4e} s^-1'.format(np.max(sim.T), ag))
+
+        print('// Tf = {0:.4f} K, a_g = {1:.4e} s^-1'.format(
+            np.max(sim.T), ag))
         print("// Sc = {0:.2f} cm/s, a = {1:.3f} s^-1.".format(
             Sc * 100, strain))
 
@@ -201,8 +203,6 @@ def computeCFPremixedTwinFlame(gas,
         print('Error occurred while solving:', e)
         return None
     return None
-
-
 
 
 def computeCFDiffusionFlame(gas,
@@ -257,7 +257,11 @@ def computeCFDiffusionFlame(gas,
     sim = ct.CounterflowDiffusionFlame(gas, width=width)
     fileRestart = os.path.join(pathRootSave, 'restart.xml')
     if restartFlag:
-        sim.restore(filename=fileRestart, name='restart', loglevel=1)
+        sim.restore(
+            filename=fileRestart,
+            name='restart',
+            loglevel=1,
+        )
 
     sim.P = Pin  # 1 bar
     sim.fuel_inlet.mdot = rhoF * UF  # kg/m^2/s
@@ -272,7 +276,7 @@ def computeCFDiffusionFlame(gas,
     sim.soret_enabled = False
     sim.energy_enabled = True
     sim.transport_model = transportModel
-    if(sim.transport_model == 'Multi'):
+    if (sim.transport_model == 'Multi'):
         sim.soret_enabled = True
 
     try:

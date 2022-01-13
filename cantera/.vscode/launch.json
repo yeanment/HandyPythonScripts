@@ -18,6 +18,20 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Python: Debug H2Dif",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                // "--Mech",  "./chem/DTUmech2019/DTU_DME_mech.xml",
+                "--Fuel",  "H2",
+                "--Diluent", "N2",
+                "--XFuel", "0.25",
+                "--TransportModel", "Mix"
+           ],
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Python: Debug DME",
             "type": "python",
             "request": "launch",
