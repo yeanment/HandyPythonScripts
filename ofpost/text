@@ -1,0 +1,8 @@
+python tecwriter.py --timeS 0.009 --item lineY1 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineY2 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineY3 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineX2 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineX3 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineX4 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineX5 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample
+python tecwriter.py --timeS 0.009 --item lineX6 --case /mnt/e/Premixed_H2Ignition/data/phi_04.00-dilution_00.00/Vin_05.00/H2Ig_D1.5E-3_T1E-4_S5E9/postProcessing/lineSample

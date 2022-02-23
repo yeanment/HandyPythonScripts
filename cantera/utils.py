@@ -7,7 +7,13 @@ import sys, os
 import matplotlib.pylab as plt
 
 plt.switch_backend('agg')
+plt.style.use('/mnt/d/Work/pythonscripts/matplotlib/styles/science.mplstyle')
 
+def first(iterable, condition=lambda x: True):
+    try:
+        return next(i for i, x in enumerate(iterable) if condition(x))
+    except StopIteration:
+        return None
 
 def computeConsumptionSpeed(sim):
     Tb = max(sim.T)

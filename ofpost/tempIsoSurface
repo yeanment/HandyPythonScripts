@@ -1,0 +1,16 @@
+#!/bin/bash
+python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V0.0_L60.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/S9.0E10/postProcessing --isoSdSurface T --isoSdSurfaceValue 1052.66 814.63 --enableSavgolFilter False --averageWidth 32 --savgolFilterWidth 25 --keepDataOption 2 --writeTimeStepCombine True --savenpz False
+python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V0.0_L60.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/S9.0E10/postProcessing --isoSdSurface H2O --isoSdSurfaceValue 0.15317995 0.082377 --enableSavgolFilter False --averageWidth 32 --savgolFilterWidth 25 --keepDataOption 2 --writeTimeStepCombine True --savenpz False
+
+# python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V4.0_L20.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/postProcessing --isoSdSurface H2O --isoSdSurfaceValue   0.01 0.02 0.05 0.06 0.07664036 0.08 0.0820859 0.082377 0.09 0.10 0.12 0.15 0.15317995 0.16 0.18 0.20 0.22 --savgolFilterWidth 1
+# python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V4.0_L20.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/postProcessing --isoSdSurface H2O --isoSdSurfaceValue   0.01 0.02 0.05 0.06 0.07664036 0.08 0.0820859 0.082377 0.09 0.10 0.12 0.15 0.15317995 0.16 0.18 0.20 0.22 --savgolFilterWidth 15
+# python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V4.0_L20.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/postProcessing --isoSdSurface H2O --isoSdSurfaceValue   0.01 0.02 0.05 0.06 0.07664036 0.08 0.0820859 0.082377 0.09 0.10 0.12 0.15 0.15317995 0.16 0.18 0.20 0.22 --savgolFilterWidth 25
+# python tecisoSurfaceToDistribution_v0.py --timeStart 0  --case /mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V4.0_L20.0T2_D4.0E-4_T2.0E-4_C0.0E-03_PLOT/postProcessing --isoSdSurface H2O --isoSdSurfaceValue   0.01 0.02 0.05 0.06 0.07664036 0.08 0.0820859 0.082377 0.09 0.10 0.12 0.15 0.15317995 0.16 0.18 0.20 0.22 --savgolFilterWidth 35
+
+
+# python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/j/CFPremixH2/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V4.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY1 --isoSdSurface T --isoSdSurfaceValue
+# python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/j/CFPremixH2/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V4.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY1 --isoSdSurface T --isoSdSurfaceValue 400 500 600 700 800 900 1000 1100 1200 1300
+
+# python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/j/CFPremixH2/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V4.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY2 --isoSdSurface T --isoSdSurfaceValue
+# python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/j/CFPremixH2/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V4.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY2 --isoSdSurface T --isoSdSurfaceValue 400 500 600 700 800 900 1000 1100 1200 1300
+

@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "--timeStart",  "0.000",
+                // "--timeEnd",  "0.0005",
+                // "--case",  "/mnt/k/PremixedH2Ign/data/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V2.0_L20.0S_D4.0E-4_T2.0E-4/S9.5E10/postProcessing/",
+                // "--case",  "/mnt/m/OpenFOAM-1712-Diff/H2Ig-phi_05.10-dilution_00.00/IgnitionMIE_Upwind/H2Ig_V2.0_L20.0T2_D4.0E-4_T2.0E-4_C5.0E-03_TEST/S9.25E10_TESTDT/postProcessing/",
+                "--case",  "/mnt/e/CFDiff-H2-Air/XH20.50-N2-Air/Momentum_UO1.00_L20_R0.2_T0.2_C0.0/postProcessing/sampleDict",
+                // "--item", "lineY2",
+                // "--isoSdSurface", "H2O",
+                // "--isoSdSurfaceValue", "0.01", "0.02", "0.05", "0.10", "0.15", "0.20",
+                "--isoSdSurface", "T",
+                "--isoSdSurfaceValue", "800", "1000",
+                
+                // "--leftMaxPos", "False",
+                // "--enableSavgolFilter", "False",
+                "--averageWidth", "32",
+                "--savgolFilterWidth", "25",
+                "--keepDataOption", "2",
+                "--writeTimeStepCombine", "True",
+                "--savenpz", "False"
+                
+                // "--timeStart",  "0.004",
+                // "--timeEnd",  "0.0042",
+                // "--writeTimeStepCombine", "False",
+                // "--case",  "/mnt/j/CFDiffH2/TTT/CFDiffH2-L_0.05-UF_01.00-Zst_0.50-D4.0E-4-T2.0E-4/postProcessing/isoZBilgerSample/",
+                // "--isoSdSurface", "H2O", //"T",
+                // // "--isoSdSurfaceValue", "400", "500", "600", "700", "900", "1100",
+                // "--isoSdSurfaceValue", 
+                // "0.01", "0.02", "0.03", "0.04", "0.05", "0.05335953", "0.06", "0.07",
+                // "0.08", "0.08488209", "0.09", "0.10", "0.11", "0.012", "0.13",
+                // "--averageWidth", "32",
+                // "--savgolFilterWidth", "25",
+                // "--keepDataOption", "1"
+
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}

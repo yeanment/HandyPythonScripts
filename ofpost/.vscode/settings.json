@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/simon/data/anaconda3/envs/ofpost/bin/python",
+    "cmake.configureOnOpen": false,
+    "python.formatting.provider": "yapf"
+}

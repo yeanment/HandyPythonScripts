@@ -1,0 +1,629 @@
+Namespace(case=['/mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postProcessing'], isoSdSurface=['T'], isoSdSurfaceValue=[400.0, 500.0, 600.0, 700.0, 800.0, 815.0, 900.0, 1000.0, 1053.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 1600.0], savgolFilterWidth=[25], timeEnd=[-1.0], timeStart=[0.0], writeTimeStepCombine=[False])
+*******************************
+Merge timeseries data in /mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postProcessing from time [0.0] to time [-1.0] for iso ['T'] = [400.0, 500.0, 600.0, 700.0, 800.0, 815.0, 900.0, 1000.0, 1053.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 1600.0].
+Working on time 2e-06.
+Working on time 0.000102.
+Working on time 0.000202.
+Working on time 0.000302.
+Working on time 0.000402.
+Working on time 0.000502.
+Working on time 0.000602.
+Working on time 0.000702.
+Working on time 0.000802.
+Working on time 0.000902.
+Working on time 0.001002.
+Working on time 0.001102.
+Working on time 0.001202.
+Working on time 0.001302.
+Working on time 0.001402.
+Working on time 0.001502.
+Working on time 0.001602.
+Working on time 0.001702.
+Working on time 0.001802.
+Working on time 0.001902.
+Working on time 0.002002.
+Working on time 0.002102.
+Working on time 0.002202.
+Working on time 0.002302.
+Working on time 0.002402.
+Working on time 0.002502.
+Working on time 0.002602.
+Working on time 0.002702.
+Working on time 0.002802.
+Working on time 0.002902.
+Working on time 0.003002.
+Working on time 0.003102.
+Working on time 0.003202.
+Working on time 0.003302.
+Working on time 0.003402.
+Working on time 0.003502.
+Working on time 0.003602.
+Working on time 0.003702.
+Working on time 0.003802.
+Working on time 0.003902.
+Working on time 0.004002.
+Working on time 0.004102.
+Working on time 0.004202.
+Working on time 0.004302.
+Working on time 0.004402.
+Working on time 0.004502.
+Working on time 0.004602.
+Working on time 0.004702.
+Working on time 0.004802.
+Working on time 0.004902.
+Working on time 0.005002.
+Working on time 0.005102.
+Working on time 0.005202.
+Failed to load data at time 0.005232.
+Failed to load data at time 0.005234.
+Failed to load data at time 0.005234.
+Failed to load data at time 0.005236.
+Failed to load data at time 0.005236.
+Failed to load data at time 0.005238.
+Failed to load data at time 0.005238.
+Failed to load data at time 0.00524.
+Failed to load data at time 0.00524.
+Failed to load data at time 0.005242.
+Failed to load data at time 0.005242.
+Failed to load data at time 0.005244.
+Failed to load data at time 0.005244.
+Failed to load data at time 0.005246.
+Failed to load data at time 0.005246.
+Failed to load data at time 0.005248.
+Failed to load data at time 0.005248.
+Failed to load data at time 0.00525.
+Failed to load data at time 0.00525.
+Failed to load data at time 0.005252.
+Failed to load data at time 0.005252.
+Failed to load data at time 0.005254.
+Failed to load data at time 0.005254.
+Failed to load data at time 0.005256.
+Failed to load data at time 0.005256.
+Failed to load data at time 0.005258.
+Failed to load data at time 0.005258.
+Failed to load data at time 0.00526.
+Failed to load data at time 0.00526.
+Failed to load data at time 0.005262.
+Failed to load data at time 0.005262.
+Failed to load data at time 0.005264.
+Failed to load data at time 0.005264.
+Failed to load data at time 0.005266.
+Failed to load data at time 0.005266.
+Failed to load data at time 0.005268.
+Failed to load data at time 0.005268.
+Failed to load data at time 0.00527.
+Failed to load data at time 0.00527.
+Failed to load data at time 0.005272.
+Failed to load data at time 0.005272.
+Failed to load data at time 0.005274.
+Failed to load data at time 0.005274.
+Failed to load data at time 0.005276.
+Failed to load data at time 0.005276.
+Failed to load data at time 0.005278.
+Failed to load data at time 0.005278.
+Failed to load data at time 0.00528.
+Failed to load data at time 0.00528.
+Failed to load data at time 0.005282.
+Failed to load data at time 0.005282.
+Failed to load data at time 0.005284.
+Failed to load data at time 0.005284.
+Failed to load data at time 0.005286.
+Failed to load data at time 0.005286.
+Failed to load data at time 0.005288.
+Failed to load data at time 0.005288.
+Failed to load data at time 0.00529.
+Failed to load data at time 0.00529.
+Failed to load data at time 0.005292.
+Failed to load data at time 0.005292.
+Failed to load data at time 0.005294.
+Failed to load data at time 0.005294.
+Failed to load data at time 0.005296.
+Failed to load data at time 0.005296.
+Failed to load data at time 0.005298.
+Failed to load data at time 0.005298.
+Failed to load data at time 0.0053.
+Failed to load data at time 0.0053.
+Working on time 0.005302.
+Failed to load data at time 0.005302.
+Failed to load data at time 0.005302.
+Failed to load data at time 0.005304.
+Failed to load data at time 0.005304.
+Failed to load data at time 0.005306.
+Failed to load data at time 0.005306.
+Failed to load data at time 0.005308.
+Failed to load data at time 0.005308.
+Failed to load data at time 0.00531.
+Failed to load data at time 0.00531.
+Failed to load data at time 0.005312.
+Failed to load data at time 0.005312.
+Failed to load data at time 0.005314.
+Failed to load data at time 0.005314.
+Failed to load data at time 0.005316.
+Failed to load data at time 0.005316.
+Failed to load data at time 0.005318.
+Failed to load data at time 0.005318.
+Failed to load data at time 0.00532.
+Failed to load data at time 0.00532.
+Failed to load data at time 0.005322.
+Failed to load data at time 0.005322.
+Failed to load data at time 0.005324.
+Failed to load data at time 0.005324.
+Failed to load data at time 0.005326.
+Failed to load data at time 0.005326.
+Failed to load data at time 0.005328.
+Failed to load data at time 0.005328.
+Failed to load data at time 0.00533.
+Failed to load data at time 0.00533.
+Failed to load data at time 0.005332.
+Failed to load data at time 0.005332.
+Failed to load data at time 0.005334.
+Failed to load data at time 0.005334.
+Failed to load data at time 0.005336.
+Failed to load data at time 0.005336.
+Failed to load data at time 0.005338.
+Failed to load data at time 0.005338.
+Failed to load data at time 0.00534.
+Failed to load data at time 0.00534.
+Failed to load data at time 0.005342.
+Failed to load data at time 0.005342.
+Failed to load data at time 0.005344.
+Failed to load data at time 0.005344.
+Failed to load data at time 0.005346.
+Failed to load data at time 0.005346.
+Failed to load data at time 0.005348.
+Failed to load data at time 0.005348.
+Failed to load data at time 0.00535.
+Failed to load data at time 0.00535.
+Failed to load data at time 0.005352.
+Failed to load data at time 0.005352.
+Failed to load data at time 0.005354.
+Failed to load data at time 0.005354.
+Failed to load data at time 0.005356.
+Failed to load data at time 0.005356.
+Failed to load data at time 0.005358.
+Failed to load data at time 0.005358.
+Failed to load data at time 0.00536.
+Failed to load data at time 0.00536.
+Failed to load data at time 0.005362.
+Failed to load data at time 0.005362.
+Failed to load data at time 0.005364.
+Failed to load data at time 0.005364.
+Failed to load data at time 0.005366.
+Failed to load data at time 0.005366.
+Failed to load data at time 0.005368.
+Failed to load data at time 0.005368.
+Failed to load data at time 0.00537.
+Failed to load data at time 0.00537.
+Failed to load data at time 0.005372.
+Failed to load data at time 0.005372.
+Failed to load data at time 0.005374.
+Failed to load data at time 0.005374.
+Failed to load data at time 0.005376.
+Failed to load data at time 0.005376.
+Failed to load data at time 0.005378.
+Failed to load data at time 0.005378.
+Failed to load data at time 0.00538.
+Failed to load data at time 0.00538.
+Failed to load data at time 0.005382.
+Failed to load data at time 0.005382.
+Failed to load data at time 0.005384.
+Failed to load data at time 0.005384.
+Failed to load data at time 0.005386.
+Failed to load data at time 0.005386.
+Failed to load data at time 0.005388.
+Failed to load data at time 0.005388.
+Failed to load data at time 0.00539.
+Failed to load data at time 0.00539.
+Failed to load data at time 0.005392.
+Failed to load data at time 0.005392.
+Failed to load data at time 0.005394.
+Failed to load data at time 0.005394.
+Failed to load data at time 0.005396.
+Failed to load data at time 0.005396.
+Failed to load data at time 0.005398.
+Failed to load data at time 0.005398.
+Failed to load data at time 0.0054.
+Failed to load data at time 0.0054.
+Working on time 0.005402.
+Failed to load data at time 0.005402.
+Failed to load data at time 0.005402.
+Failed to load data at time 0.005404.
+Failed to load data at time 0.005404.
+Failed to load data at time 0.005406.
+Failed to load data at time 0.005406.
+Failed to load data at time 0.005408.
+Failed to load data at time 0.005408.
+Failed to load data at time 0.00541.
+Failed to load data at time 0.00541.
+Failed to load data at time 0.005412.
+Failed to load data at time 0.005412.
+Failed to load data at time 0.005414.
+Failed to load data at time 0.005414.
+Failed to load data at time 0.005416.
+Failed to load data at time 0.005416.
+Failed to load data at time 0.005418.
+Failed to load data at time 0.005418.
+Failed to load data at time 0.00542.
+Failed to load data at time 0.00542.
+Failed to load data at time 0.005422.
+Failed to load data at time 0.005422.
+Failed to load data at time 0.005424.
+Failed to load data at time 0.005424.
+Failed to load data at time 0.005426.
+Failed to load data at time 0.005426.
+Failed to load data at time 0.005428.
+Failed to load data at time 0.005428.
+Failed to load data at time 0.00543.
+Failed to load data at time 0.00543.
+Failed to load data at time 0.005432.
+Failed to load data at time 0.005432.
+Failed to load data at time 0.005434.
+Failed to load data at time 0.005434.
+Failed to load data at time 0.005436.
+Failed to load data at time 0.005436.
+Failed to load data at time 0.005438.
+Failed to load data at time 0.005438.
+Failed to load data at time 0.00544.
+Failed to load data at time 0.00544.
+Failed to load data at time 0.005442.
+Failed to load data at time 0.005442.
+Failed to load data at time 0.005444.
+Failed to load data at time 0.005444.
+Failed to load data at time 0.005446.
+Failed to load data at time 0.005446.
+Failed to load data at time 0.005448.
+Failed to load data at time 0.005448.
+Failed to load data at time 0.00545.
+Failed to load data at time 0.00545.
+Failed to load data at time 0.005452.
+Failed to load data at time 0.005452.
+Failed to load data at time 0.005454.
+Failed to load data at time 0.005454.
+Failed to load data at time 0.005456.
+Failed to load data at time 0.005456.
+Failed to load data at time 0.005458.
+Failed to load data at time 0.005458.
+Failed to load data at time 0.00546.
+Failed to load data at time 0.00546.
+Failed to load data at time 0.005462.
+Failed to load data at time 0.005462.
+Failed to load data at time 0.005464.
+Failed to load data at time 0.005464.
+Failed to load data at time 0.005466.
+Failed to load data at time 0.005466.
+Failed to load data at time 0.005468.
+Failed to load data at time 0.005468.
+Failed to load data at time 0.00547.
+Failed to load data at time 0.00547.
+Failed to load data at time 0.005472.
+Failed to load data at time 0.005472.
+Failed to load data at time 0.005474.
+Failed to load data at time 0.005474.
+Failed to load data at time 0.005476.
+Failed to load data at time 0.005476.
+Failed to load data at time 0.005478.
+Failed to load data at time 0.005478.
+Failed to load data at time 0.00548.
+Failed to load data at time 0.00548.
+Failed to load data at time 0.005482.
+Failed to load data at time 0.005482.
+Failed to load data at time 0.005484.
+Failed to load data at time 0.005484.
+Failed to load data at time 0.005486.
+Failed to load data at time 0.005486.
+Failed to load data at time 0.005488.
+Failed to load data at time 0.005488.
+Failed to load data at time 0.00549.
+Failed to load data at time 0.00549.
+Failed to load data at time 0.005492.
+Failed to load data at time 0.005492.
+Failed to load data at time 0.005494.
+Failed to load data at time 0.005494.
+Failed to load data at time 0.005496.
+Failed to load data at time 0.005496.
+Failed to load data at time 0.005498.
+Failed to load data at time 0.005498.
+Failed to load data at time 0.0055.
+Failed to load data at time 0.0055.
+Working on time 0.005502.
+Failed to load data at time 0.005502.
+Failed to load data at time 0.005502.
+Failed to load data at time 0.005504.
+Failed to load data at time 0.005504.
+Failed to load data at time 0.005506.
+Failed to load data at time 0.005506.
+Failed to load data at time 0.005508.
+Failed to load data at time 0.005508.
+Failed to load data at time 0.00551.
+Failed to load data at time 0.00551.
+Failed to load data at time 0.005512.
+Failed to load data at time 0.005512.
+Failed to load data at time 0.005514.
+Failed to load data at time 0.005514.
+Failed to load data at time 0.005516.
+Failed to load data at time 0.005516.
+Failed to load data at time 0.005518.
+Failed to load data at time 0.005518.
+Failed to load data at time 0.00552.
+Failed to load data at time 0.00552.
+Failed to load data at time 0.005522.
+Failed to load data at time 0.005522.
+Failed to load data at time 0.005524.
+Failed to load data at time 0.005524.
+Failed to load data at time 0.005526.
+Failed to load data at time 0.005526.
+Failed to load data at time 0.005528.
+Failed to load data at time 0.005528.
+Failed to load data at time 0.00553.
+Failed to load data at time 0.00553.
+Failed to load data at time 0.005532.
+Failed to load data at time 0.005532.
+Failed to load data at time 0.005534.
+Failed to load data at time 0.005534.
+Failed to load data at time 0.005536.
+Failed to load data at time 0.005536.
+Failed to load data at time 0.005538.
+Failed to load data at time 0.005538.
+Failed to load data at time 0.00554.
+Failed to load data at time 0.00554.
+Failed to load data at time 0.005542.
+Failed to load data at time 0.005542.
+Failed to load data at time 0.005544.
+Failed to load data at time 0.005544.
+Failed to load data at time 0.005546.
+Failed to load data at time 0.005546.
+Failed to load data at time 0.005548.
+Failed to load data at time 0.005548.
+Failed to load data at time 0.00555.
+Failed to load data at time 0.00555.
+Failed to load data at time 0.005552.
+Failed to load data at time 0.005552.
+Failed to load data at time 0.005554.
+Failed to load data at time 0.005554.
+Failed to load data at time 0.005556.
+Failed to load data at time 0.005556.
+Failed to load data at time 0.005558.
+Failed to load data at time 0.005558.
+Failed to load data at time 0.00556.
+Failed to load data at time 0.00556.
+Failed to load data at time 0.005562.
+Failed to load data at time 0.005562.
+Failed to load data at time 0.005564.
+Failed to load data at time 0.005564.
+Failed to load data at time 0.005566.
+Failed to load data at time 0.005566.
+Failed to load data at time 0.005568.
+Failed to load data at time 0.005568.
+Failed to load data at time 0.00557.
+Failed to load data at time 0.00557.
+Failed to load data at time 0.005572.
+Failed to load data at time 0.005572.
+Failed to load data at time 0.005574.
+Failed to load data at time 0.005574.
+Failed to load data at time 0.005576.
+Failed to load data at time 0.005576.
+Failed to load data at time 0.005578.
+Failed to load data at time 0.005578.
+Failed to load data at time 0.00558.
+Failed to load data at time 0.00558.
+Failed to load data at time 0.005582.
+Failed to load data at time 0.005582.
+Failed to load data at time 0.005584.
+Failed to load data at time 0.005584.
+Failed to load data at time 0.005586.
+Failed to load data at time 0.005586.
+Failed to load data at time 0.005588.
+Failed to load data at time 0.005588.
+Failed to load data at time 0.00559.
+Failed to load data at time 0.00559.
+Failed to load data at time 0.005592.
+Failed to load data at time 0.005592.
+Failed to load data at time 0.005594.
+Failed to load data at time 0.005594.
+Failed to load data at time 0.005596.
+Failed to load data at time 0.005596.
+Failed to load data at time 0.005598.
+Failed to load data at time 0.005598.
+Failed to load data at time 0.0056.
+Failed to load data at time 0.0056.
+Working on time 0.005602.
+Failed to load data at time 0.005602.
+Failed to load data at time 0.005602.
+Failed to load data at time 0.005604.
+Failed to load data at time 0.005604.
+Failed to load data at time 0.005606.
+Failed to load data at time 0.005606.
+Failed to load data at time 0.005608.
+Failed to load data at time 0.005608.
+Failed to load data at time 0.00561.
+Failed to load data at time 0.00561.
+Failed to load data at time 0.005612.
+Failed to load data at time 0.005612.
+Failed to load data at time 0.005614.
+Failed to load data at time 0.005614.
+Failed to load data at time 0.005616.
+Failed to load data at time 0.005616.
+Failed to load data at time 0.005618.
+Failed to load data at time 0.005618.
+Failed to load data at time 0.00562.
+Failed to load data at time 0.00562.
+Failed to load data at time 0.005622.
+Failed to load data at time 0.005622.
+Failed to load data at time 0.005624.
+Failed to load data at time 0.005624.
+Failed to load data at time 0.005626.
+Failed to load data at time 0.005626.
+Failed to load data at time 0.005628.
+Failed to load data at time 0.005628.
+Failed to load data at time 0.00563.
+Failed to load data at time 0.00563.
+Failed to load data at time 0.005632.
+Failed to load data at time 0.005632.
+Failed to load data at time 0.005634.
+Failed to load data at time 0.005634.
+Failed to load data at time 0.005636.
+Failed to load data at time 0.005636.
+Failed to load data at time 0.005638.
+Failed to load data at time 0.005638.
+Failed to load data at time 0.00564.
+Failed to load data at time 0.00564.
+Failed to load data at time 0.005642.
+Failed to load data at time 0.005642.
+Failed to load data at time 0.005644.
+Failed to load data at time 0.005644.
+Failed to load data at time 0.005646.
+Failed to load data at time 0.005646.
+Failed to load data at time 0.005648.
+Failed to load data at time 0.005648.
+Failed to load data at time 0.00565.
+Failed to load data at time 0.00565.
+Failed to load data at time 0.005652.
+Failed to load data at time 0.005652.
+Failed to load data at time 0.005654.
+Failed to load data at time 0.005654.
+Failed to load data at time 0.005656.
+Failed to load data at time 0.005656.
+Failed to load data at time 0.005658.
+Failed to load data at time 0.005658.
+Failed to load data at time 0.00566.
+Failed to load data at time 0.00566.
+Failed to load data at time 0.005662.
+Failed to load data at time 0.005662.
+Failed to load data at time 0.005664.
+Failed to load data at time 0.005664.
+Failed to load data at time 0.005666.
+Failed to load data at time 0.005666.
+Failed to load data at time 0.005668.
+Failed to load data at time 0.005668.
+Failed to load data at time 0.00567.
+Failed to load data at time 0.00567.
+Failed to load data at time 0.005672.
+Failed to load data at time 0.005672.
+Failed to load data at time 0.005674.
+Failed to load data at time 0.005674.
+Failed to load data at time 0.005676.
+Failed to load data at time 0.005676.
+Failed to load data at time 0.005678.
+Failed to load data at time 0.005678.
+Failed to load data at time 0.00568.
+Failed to load data at time 0.00568.
+Failed to load data at time 0.005682.
+Failed to load data at time 0.005682.
+Failed to load data at time 0.005684.
+Failed to load data at time 0.005684.
+Failed to load data at time 0.005686.
+Failed to load data at time 0.005686.
+Failed to load data at time 0.005688.
+Failed to load data at time 0.005688.
+Failed to load data at time 0.00569.
+Failed to load data at time 0.00569.
+Failed to load data at time 0.005692.
+Failed to load data at time 0.005692.
+Failed to load data at time 0.005694.
+Failed to load data at time 0.005694.
+Failed to load data at time 0.005696.
+Failed to load data at time 0.005696.
+Failed to load data at time 0.005698.
+Failed to load data at time 0.005698.
+Failed to load data at time 0.0057.
+Failed to load data at time 0.0057.
+Working on time 0.005702.
+Failed to load data at time 0.005702.
+Failed to load data at time 0.005702.
+Failed to load data at time 0.005704.
+Failed to load data at time 0.005704.
+Failed to load data at time 0.005706.
+Failed to load data at time 0.005706.
+Failed to load data at time 0.005708.
+Failed to load data at time 0.005708.
+Failed to load data at time 0.00571.
+Failed to load data at time 0.00571.
+Failed to load data at time 0.005712.
+Failed to load data at time 0.005712.
+Failed to load data at time 0.005714.
+Failed to load data at time 0.005714.
+Failed to load data at time 0.005716.
+Failed to load data at time 0.005716.
+Failed to load data at time 0.005718.
+Failed to load data at time 0.005718.
+Failed to load data at time 0.00572.
+Failed to load data at time 0.00572.
+Failed to load data at time 0.005722.
+Failed to load data at time 0.005722.
+Failed to load data at time 0.005724.
+Failed to load data at time 0.005724.
+Failed to load data at time 0.005726.
+Failed to load data at time 0.005726.
+Failed to load data at time 0.005728.
+Failed to load data at time 0.005728.
+Failed to load data at time 0.00573.
+Failed to load data at time 0.00573.
+Failed to load data at time 0.005732.
+Failed to load data at time 0.005732.
+Failed to load data at time 0.005734.
+Failed to load data at time 0.005734.
+Failed to load data at time 0.005736.
+Failed to load data at time 0.005736.
+Failed to load data at time 0.005738.
+Failed to load data at time 0.005738.
+Failed to load data at time 0.00574.
+Failed to load data at time 0.00574.
+Failed to load data at time 0.005742.
+Failed to load data at time 0.005742.
+Failed to load data at time 0.005744.
+Failed to load data at time 0.005744.
+Failed to load data at time 0.005746.
+Failed to load data at time 0.005746.
+Failed to load data at time 0.005748.
+Failed to load data at time 0.005748.
+Failed to load data at time 0.00575.
+Failed to load data at time 0.00575.
+Failed to load data at time 0.005752.
+Failed to load data at time 0.005752.
+Failed to load data at time 0.005754.
+Failed to load data at time 0.005754.
+Failed to load data at time 0.005756.
+Failed to load data at time 0.005756.
+Failed to load data at time 0.005758.
+Failed to load data at time 0.005758.
+Failed to load data at time 0.00576.
+Failed to load data at time 0.00576.
+Failed to load data at time 0.005762.
+Failed to load data at time 0.005762.
+Failed to load data at time 0.005764.
+Failed to load data at time 0.005764.
+Failed to load data at time 0.005766.
+Failed to load data at time 0.005766.
+Failed to load data at time 0.005768.
+Failed to load data at time 0.005768.
+Failed to load data at time 0.00577.
+Failed to load data at time 0.00577.
+Failed to load data at time 0.005772.
+Failed to load data at time 0.005772.
+Failed to load data at time 0.005774.
+Failed to load data at time 0.005774.
+Failed to load data at time 0.005776.
+Failed to load data at time 0.005776.
+Failed to load data at time 0.005778.
+Failed to load data at time 0.005778.
+Failed to load data at time 0.00578.
+Failed to load data at time 0.00578.
+Namespace(case=['/mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postprocessing'], isoSdSurface=['T'], isoSdSurfaceValue=[400.0, 500.0, 600.0, 700.0, 800.0, 815.0, 900.0, 1000.0, 1053.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 1600.0], savgolFilterWidth=[1], timeEnd=[-1.0], timeStart=[0.0], writeTimeStepCombine=[False])
+*******************************
+Merge timeseries data in /mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postprocessing from time [0.0] to time [-1.0] for iso ['T'] = [400.0, 500.0, 600.0, 700.0, 800.0, 815.0, 900.0, 1000.0, 1053.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 1600.0].
+Failed to get time series in /mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postprocessing/lineSample
+Traceback (most recent call last):
+  File "/mnt/k/PremixedH2Ign/dataPostsh/utils.py", line 84, in obtain_sorted_timeseries
+    time_series = list(filter(is_digit, os.listdir(case_path)))
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/j/CFPremixH2/H2Ig-phi_05.10-dilution_00.00/IgnitionEFP/H2Ig_V0.5_L20.0S_D4.0E-4_T2.0E-4/postprocessing/lineSample'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "tecgetrfcsv_v2.py", line 230, in <module>
+    tecplotMerge(pathRoot, args.timeStart[0], args.timeEnd[0], \
+  File "tecgetrfcsv_v2.py", line 21, in tecplotMerge
+    timeSeries = utils.obtain_sorted_timeseries(lineSamplePath)
+  File "/mnt/k/PremixedH2Ign/dataPostsh/utils.py", line 90, in obtain_sorted_timeseries
+    raise RuntimeError
+RuntimeError

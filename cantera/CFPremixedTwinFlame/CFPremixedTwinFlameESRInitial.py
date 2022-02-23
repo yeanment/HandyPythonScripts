@@ -6,7 +6,7 @@ An opposed-flow premixed strained flame in evaluating ESR.
 
 import cantera as ct
 import numpy as np
-import sys, os
+import sys, os, re
 import matplotlib.pylab as plt
 import argparse
 
@@ -32,6 +32,8 @@ if __name__ == "__main__":
         default = [300.], help='Fuel:Oxid')
     parse.add_argument('--TransportModel', action='store', nargs=1, type=str, \
         default = ['Mix'], help='Transportmodel, e.g. Mix, Multi, UnityLeiws.')
+    parse.add_argument('--InitialFile', action='store', nargs=1, type=str, \
+        default = [''], help='InitialFile for ESR estimation.')
 
     args = parse.parse_args()
     print(args)
@@ -77,13 +79,13 @@ if __name__ == "__main__":
     width = 20.e-3  # 10mm wide
     tol_ss = [1.0e-6, 1.0e-10]  # [rtol atol] for steady-state problem
     tol_ts = [1.0e-6, 1.0e-10]  # [rtol atol] for time stepping
-    loglevel = 0  # amount of diagnostic output (0 to 5)
+    loglevel = 1  # amount of diagnostic output (0 to 5)
     refine_grid = True  # True to enable refinement, False to disable
     sim = ct.FreeFlame(gas, initial_grid)
     sim.flame.set_steady_tolerances(default=tol_ss)
     sim.flame.set_transient_tolerances(default=tol_ts)
     sim.soret_enabled = False
-    sim.max_time_step_count, sim.max_grid_points = 1E+6, 1E+5
+    sim.max_time_step_count, sim.max_grid_points = 1E+4, 1E+5
     gas.transport_model = args.TransportModel[0]
     sim.transport_model = args.TransportModel[0]
     if (sim.transport_model == 'Multi'):
@@ -92,7 +94,8 @@ if __name__ == "__main__":
     sim.inlet.X, sim.inlet.T = comp, Tin
     sim.set_max_jac_age(50, 50)  # Max number of times the Jacobian
     # sim.set_time_step(0.1e-06, [2, 5, 10, 20, 80])  # Time steps (s)
-    sim.set_refine_criteria(ratio=3.0, slope=0.05, curve=0.05, prune=0.02)
+    # sim.set_refine_criteria(ratio=3.0, slope=0.05, curve=0.05, prune=0.02)
+    sim.set_refine_criteria(ratio=3.0, slope=0.2, curve=0.2, prune=0.001)
     sim.solve(loglevel, refine_grid)
     sim.write_csv(os.path.join(pathRootSave,
                                '{0}-Air-phi_{1:05.2f}.csv'.format(fuel, phi)),
@@ -121,24 +124,67 @@ if __name__ == "__main__":
     # Indicator of iteration and the latest flame still burning
     iter, iter_last_burning = 0, 0
     # Init iter
-    iter_Uin = 5.0  # m/s
+    iter_Uin = 1.0  # m/s
     halfWidth = 10.00e-3  # m
     # Umiform increase
-    delta_iter_Uin, delta_iter_Uin_factor = 1, 2.0
+    delta_iter_Uin, delta_iter_Uin_factor = 0.1, 2.0
     delta_iter_Uin_min = 0.001
     # Umiform increase
 
     # Initial for restartFile
     gas.TPX = Tin, Pin, comp
-    iter_Tmax, iter_posf, iter_ag, iter_Sc = utils.computeCFPremixedTwinFlame(
-        gas,
-        Pin,
-        Tin,
-        iter_Uin,
-        halfWidth,
-        restartFlag=False,
-        loglevel=0,
-        pathRootSave=pathRootSave)
+    if (args.InitialFile[0] == ''):
+        iter_Tmax, iter_posf, iter_ag, iter_Sc = utils.computeCFPremixedTwinFlame(
+            gas,
+            Pin,
+            Tin,
+            iter_Uin,
+            halfWidth,
+            restartFlag=False,
+            loglevel=0,
+            pathRootSave=pathRootSave)
+    else:
+        # Provide initial file for
+        with open(args.InitialFile[0]) as f:
+            dataName = re.split(r"[\t, ]+", f.readline().strip())
+            dataName = [item[1:-1] for item in dataName]
+            dataInput = np.loadtxt(f, delimiter=",", skiprows=0)
+            dataInput = dataInput[::-1, :]
+        iGrid = utils.first(dataName, condition=lambda x: x == 'Points:0')
+        # Generate restart file
+        sim = ct.CounterflowTwinPremixedFlame(gas,
+                                              grid=dataInput[0, iGrid] -
+                                              dataInput[:, iGrid])
+        locRelative = sim.grid / sim.grid[-1]
+        sim.set_profile('T', locRelative, dataInput[:, dataName.index('T')])
+        # sim.set_profile('pressure', locRelative, np.ones_like(sim.P) * ct.one_atm)
+        sim.set_profile('velocity', locRelative,
+                        -dataInput[:, dataName.index('U:0')])
+        for item in gas.species_names:
+            sim.set_profile(item, locRelative, dataInput[:,
+                                                         dataName.index(item)])
+
+        gas.TPX = Tin, Pin, comp
+        sim.reactants.mdot = gas.density * iter_Uin
+        # sim.set_interrupt(interrupt_extinction)
+        sim.max_grid_points = 1e5
+        sim.soret_enabled = False
+        sim.energy_enabled = True
+        sim.transport_model = args.TransportModel[0]
+        if (sim.transport_model == 'Multi'):
+            sim.soret_enabled = True
+        sim.save(args.InitialFile[0][:-3] + 'xml', name='initial restart')
+        sim.save(os.path.join(pathRootSave, 'restart.xml'),
+                 name='restart')
+        iter_Tmax, iter_posf, iter_ag, iter_Sc = utils.computeCFPremixedTwinFlame(
+            gas,
+            Pin,
+            Tin,
+            iter_Uin,
+            halfWidth,
+            restartFlag=True,
+            loglevel=1,
+            pathRootSave=pathRootSave)
 
     # List of peak temperatures， global strain rate, inlet velocity, flamepos
     T_maxArray, ag_Array, Sc_Array = [iter_Tmax], [iter_ag], [iter_Sc]

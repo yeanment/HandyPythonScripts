@@ -1,0 +1,7 @@
+python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/k/PremixedH2Ign/data/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V2.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY1 --isoSdSurface T --isoSdSurfaceValue
+python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/k/PremixedH2Ign/data/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V2.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY1 --isoSdSurface T --isoSdSurfaceValue 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 
+python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/k/PremixedH2Ign/data/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V2.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY2 --isoSdSurface T --isoSdSurfaceValue
+python tecgetrfcsv_v1.py --timeStart 0  --case  /mnt/k/PremixedH2Ign/data/H2Ig-phi_00.40-dilution_00.00/IgnitionEFP/H2Ig_V2.0_L20.0S_D4.0E-4_T2.0E-4/postProcessing/ --item lineY2 --isoSdSurface T --isoSdSurfaceValue 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 
+
+
+

@@ -1,0 +1,8 @@
+python tecwriter.py --timeS 0.0 --item lineX1 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineX3 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineX4 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineX6 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineY1 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineY2 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+python tecwriter.py --timeS 0.0 --item lineY3 --case /mnt/e/Premixed_H2Ignition/data/H2Ig-phi_05.10-dilution_00.00/coarsegrid/H2Ig_V1.5_D4.0E-4_T2.0E-4_S1.0E11/postProcessing/lineSample
+

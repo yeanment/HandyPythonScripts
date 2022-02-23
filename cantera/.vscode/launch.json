@@ -40,6 +40,8 @@
                 "--Mech",  "./chem/DME_LuChen2015/DME_LuChen2015.xml",
                 "--Fuel",  "CH3OCH3",
                 "--EquivalenceRatio",  "1.0",
+                "--Tin", "700",
+                "--InitialFile", "data/CFPremixedTwinFlame/Y0.01_000001.csv"
                 // "--TransportModel", "Mix"
            ],
             "console": "integratedTerminal"
