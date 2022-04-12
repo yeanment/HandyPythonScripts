@@ -5,6 +5,7 @@ import numpy as np
 import scipy, scipy.special
 import sys, os
 import matplotlib.pylab as plt
+import argparse
 
 plt.switch_backend('agg')
 plt.style.use('/mnt/d/Work/pythonscripts/matplotlib/styles/science.mplstyle')
@@ -14,6 +15,16 @@ def first(iterable, condition=lambda x: True):
         return next(i for i, x in enumerate(iterable) if condition(x))
     except StopIteration:
         return None
+
+def str2bool(string):
+    if isinstance(string, bool):
+        return string
+    if string.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif string.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def computeConsumptionSpeed(sim):
     Tb = max(sim.T)
@@ -223,7 +234,8 @@ def computeCFDiffusionFlame(gas,
                             restartFlag=False,
                             pathRootSave='./data',
                             velocityBalanceOption='velocity',
-                            transportModel='Mix'):
+                            transportModel='Mix',
+                            enableSoret=False):
     temperature_limit_extinction = 400
 
     class FlameExtinguished(Exception):
@@ -282,8 +294,8 @@ def computeCFDiffusionFlame(gas,
     sim.soret_enabled = False
     sim.energy_enabled = True
     sim.transport_model = transportModel
-    if (sim.transport_model == 'Multi'):
-        sim.soret_enabled = True
+    if (sim.transport_model == 'Multi' and enableSoret):
+        sim.soret_enabled = True # True
 
     try:
         sim.set_refine_criteria(ratio=5.0, slope=0.2, curve=0.2, prune=0.2)

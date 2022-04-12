@@ -38,21 +38,27 @@ pigz -dc archive.tar.gz | tar xf -
 sed -i 's/^    symmetryPlane/    symPlane/g'  0/*
 
 sed -i 's/libcanteraFlamePosDebug/libcanteraFlamePos/g'  system/controlDict*
+sed -i 's/libs ("# liboptimizedChemistry_DME.so");/\/\/ libs ("liboptimizedChemistry_DME.so");/g'  system/controlDict
 
 sed -i 's/ebiReacFoamDLBZIgnExp6XSM0/ebiReacFoamDLBZLeIgnExp6XSM0/g'  system/controlDict*
+
 
 sed -i 's/writeInterval 1e-5;/writeInterval 2e-5;/g'  system/controlDict*
 sed -i 's/\.\*sdT/"\.\*sdT"/g'  system/controlDict*
 
+sed -i 's/value           700;/value           400;/g'  system/controlDict*
 
 find . -type f -exec  sed -i 's/\t/    /g' {} +
 
   
 yhbatch -n 24 -N  1 -p bigdata -J xsmReco ./
 
+find . -mindepth 2 -maxdepth 2 -type d -regextype posix-egrep -regex  ".*/processor[0-9]{1,2}/0.00[0-9]{1,1}[0-46-9]$" -exec rm -r {} \; &
  
 find . -mindepth 2 -maxdepth 2 -type d -regextype posix-egrep -regex  ".*/processor[0]{1,2}/0\.00[0-4]{1,1}[0-9]{1,9}$" -exec rm -r {} \; &
 find . -mindepth 1 -maxdepth 1 -type d -regextype posix-egrep -regex  ".*/0\.01[0-9]{1,1}[1357]{1,9}$" -exec rm -r {} \;
+find . -mindepth 3 -maxdepth 3 -type d -regextype posix-egrep -regex  ".*/5e-05$" -exec rm -r {} \;
+find . -mindepth 3 -maxdepth 3 -type d -regextype posix-egrep -regex  ".*/0\.[0-9]{4,4}[5]{1,1}$" -exec rm -r {} \;
 
 find . -mindepth 2 -maxdepth 5 -type f -regextype posix-egrep -regex ".*cellCpu.*" > log.find -exec rm -r {} \; &
 find . -mindepth 2 -maxdepth 5 -type f -regextype posix-egrep -regex ".*referenceMap.*" > log.find -exec rm -r {} \; &
@@ -61,7 +67,7 @@ find . -mindepth 2 -maxdepth 5 -type f -regextype posix-egrep -regex ".*ZBilger.
 find . -mindepth 2 -maxdepth 3 -type f -regextype posix-egrep -regex ".*_sdT.*" > log.find -exec rm -r {} \; &
 find . -mindepth 2 -maxdepth 3 -type f -regextype posix-egrep -regex ".*_sdH2O.*" > log.find -exec rm -r {} \; &
 
-
+ls | grep -E "^0\.[0-9][0-46-9]$" | xargs -i rm -r ./{}
 
 find -type d -empty
 
@@ -111,7 +117,7 @@ postProcess -funcs "(sampleDictIsoT sampleDictIsoH2O)" -time 0.00000001: -fields
   sd_conv_sdH2O sd_corr_sdH2O sd_diff_sdH2O sd_rr_sdH2O sd_sdH2O sd_unsteady_sdH2O)"
 
 
-ebiReacFoamDLBIgnExp6XSM0 -postProcess -dict ../controlDict.postEnergyBudget  -time '0.000001:'
+ebiReacFoamDLBIgnExp6XSM0 -postProcess  -time '0.000001:' -dict ../controlDict.postEnergyBudget  
 postProcess -dict ../controlDict.postSampleIsoSurface -time 0.00000001: -fields \
 "(p U Qdot T rho H O OH HO2 H2O2 H2 O2 H2O N2 rho
  Ks_sdT W_sdT cur_sdT grad_sdT igradU_sdT n_sdT nngradU_sdT
@@ -142,3 +148,9 @@ sudo update-alternatives --config g++
 
 sudo update-alternatives --set gcc /usr/bin/gcc-9
 sudo update-alternatives --set g++ /usr/bin/g++-9
+
+
+
+
+bundle install
+bundle exec jekyll serve

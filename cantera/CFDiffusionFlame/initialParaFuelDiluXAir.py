@@ -15,19 +15,43 @@ sys.path.append(os.getcwd() + "/.")
 import utils
 
 if __name__ == "__main__":
-    parse = argparse.ArgumentParser( \
-        description='Process some input parameters.')
-    parse.add_argument('--Fuel', action='store', nargs=1, type=str, \
-        default = ['H2'], help='Fuel for the flame.')
-    parse.add_argument('--Diluent', action='store', nargs=1, type=str, \
-        default = ['N2'], help='Diluent, e.g. HE, AR, N2.')
-    parse.add_argument('--XFuel', action='store', nargs=1, type=float, \
-        default = [0.2], help='XFuel, Fuel mole fraction in fuel stream.')
-    # parse.add_argument('--Zst', action='store', nargs=1, type=float, \
-    #     default = [0.5], help='Zst, i.e. stoichiometric mixture fraction.')
-    parse.add_argument('--TransportModel', action='store', nargs=1, type=str, \
-        default = ['Mix'], help='Transportmodel, e.g. Mix, Multi, UnityLeiws.')
-
+    parse = argparse.ArgumentParser(description='Process input parameters.')
+    parse.add_argument('--Fuel',
+                       action='store',
+                       nargs=1,
+                       type=str,
+                       default=['H2'],
+                       help='Fuel for the flame.')
+    parse.add_argument('--Diluent',
+                       action='store',
+                       nargs=1,
+                       type=str,
+                       default=['N2'],
+                       help='Diluent, e.g. HE, AR, N2.')
+    parse.add_argument('--XFuel',
+                       action='store',
+                       nargs=1,
+                       type=float,
+                       default=[0.2],
+                       help='XFuel, Fuel mole fraction in fuel stream.')
+    # parse.add_argument('--Zst',
+    #                    action='store',
+    #                    nargs=1,
+    #                    type=float,
+    #                    default=[0.5],
+    #                    help='Zst, i.e. stoichiometric mixture fraction.')
+    parse.add_argument('--TransportModel',
+                       action='store',
+                       nargs=1,
+                       type=str,
+                       default=['Mix'],
+                       help='Transportmodel, e.g. Mix, Multi, UnityLeiws.')
+    parse.add_argument('--EnableSoret',
+                       action='store',
+                       nargs=1,
+                       type=utils.str2bool,
+                       default=[False],
+                       help='Enable Soret diffusion for Multi transportmodel.')
     args = parse.parse_args()
     print(args)
 
@@ -38,15 +62,14 @@ if __name__ == "__main__":
     Tin, Pin = 298.0, 1.0 * ct.one_atm
 
     # Initial fuel and oxidier profile
-    fuel, oxidizer, diluent = args.Fuel[0], 'O2', args.Diluent[0]
-    iFuel, iOxid = gas.species_index(fuel), gas.species_index(oxidizer)
-    iDilu, iN2 = gas.species_index(diluent), gas.species_index('N2')
+    fuel, oxid, dilu = args.Fuel[0], 'O2', args.Diluent[0]
+    iFuel, iOxid = gas.species_index(fuel), gas.species_index(oxid)
+    iDilu, iN2 = gas.species_index(dilu), gas.species_index('N2')
 
     MWF, MWO = gas.molecular_weights[iFuel], gas.molecular_weights[iOxid]
     MWD, MWN2 = gas.molecular_weights[iDilu], gas.molecular_weights[iN2]
 
-    nuOF = gas.stoich_air_fuel_ratio(fuel, oxidizer,
-                                     basis='mole')  # Mass based
+    nuOF = gas.stoich_air_fuel_ratio(fuel, oxid, basis='mole')  # Mass based
     stoichOF = nuOF * MWF / MWO  # stoichOF = 0.5  # Mole based
     # airN2O2 = 3.76  # Mole based
 
@@ -77,11 +100,11 @@ if __name__ == "__main__":
     # gas.mixture_fraction(Y1, Y2)
     zstmixture = gas.mass_fraction_dict()
     gas.Y = zstmixture
-    gas.equivalence_ratio()
+    print("Validated for estimated Zst: phi = ", gas.equivalence_ratio())
 
-    data_directory = 'data/EdgeFlameFuelDiluXAir/' + fuel + '-' + diluent + '-Air/'
-    if not os.path.exists(data_directory):
-        os.makedirs(data_directory)
+    dataRootPath = 'data/CFDIgnFuelDiluXAirTMP/' + fuel + '-' + dilu + '-Air/'
+    if not os.path.exists(dataRootPath):
+        os.makedirs(dataRootPath)
 
     # Compute the laminar flame speed of stoichiometric mixture
     X = np.zeros(gas.n_species)
@@ -97,7 +120,7 @@ if __name__ == "__main__":
     gas.equilibrate('HP')
     rhob = gas.density
     print('// {0} : {1} : {2} : {3} = {4:.4f} : {5:.4f} : {6:.4f} : {7:.4f}'.
-          format(fuel, diluent, oxidizer, "N2", 1, qDilu, stoichOF, qN2))
+          format(fuel, dilu, oxid, "N2", 1, qDilu, stoichOF, qN2))
     print('// LeF = {0:.3f}, LeO = {1:.3f}, phou = {2:.3f}, rhob = {3:.3f}.'.
           format(LeX[iFuel], LeX[iOxid], rhou, rhob))
     print('// alpha = {0:.3f}, Tf = {1:.3f}.'.format(rhou / rhob, gas.T))
@@ -105,7 +128,7 @@ if __name__ == "__main__":
     gas.TPX = Tin, Pin, X
     initial_grid = 5 * np.array(
         [0.0, 0.0001, 0.0002, 0.0005, 0.001, 0.002, 0.005, 0.01], 'd')  # m
-    width = 20.e-3  # 10mm wide
+    width = 20.e-3  # 20mm wide
     tol_ss = [1.0e-6, 1.0e-10]  # [rtol atol] for steady-state problem
     tol_ts = [1.0e-6, 1.0e-10]  # [rtol atol] for time stepping
     loglevel = 0  # amount of diagnostic output (0 to 5)
@@ -117,7 +140,7 @@ if __name__ == "__main__":
     sim.max_time_step_count = 1E+6
     gas.transport_model = args.TransportModel[0]
     sim.transport_model = args.TransportModel[0]
-    if(sim.transport_model == 'Multi'):
+    if (sim.transport_model == 'Multi' and args.EnableSoret[0]):
         sim.soret_enabled = True
     sim.energy_enabled = True
     sim.max_grid_points = 1E+5
@@ -125,13 +148,13 @@ if __name__ == "__main__":
     sim.set_max_jac_age(50, 50)  # Max number of times the Jacobian
     sim.set_time_step(0.1e-06, [2, 5, 10, 20, 80])  # Time steps (s)
     sim.set_refine_criteria(ratio=3.0, slope=0.005, curve=0.005, prune=0.005)
-    if(sim.transport_model == 'Multi'):
+    if (sim.transport_model == 'Multi'):
         sim.set_refine_criteria(ratio=3.0, slope=0.05, curve=0.05, prune=0.02)
     sim.solve(loglevel, refine_grid)
-    sim.write_csv(
-        data_directory +
-        'XH2_{0:.2f}-{1}-Zst_{2:.2f}-Air-{3}-Premixed.csv'.format(XFF, diluent, Zst, args.TransportModel[0]),
-        species='Y')
+    sim.write_csv(dataRootPath +
+                  'XH2_{0:.2f}-{1}-Zst_{2:.2f}-Air-{3}-Premixed.csv'.format(
+                      XFF, dilu, Zst, args.TransportModel[0]),
+                  species='Y')
     Sc = utils.computeConsumptionSpeed(sim)
     deltaF = utils.computeFlameThickness(sim)
     rho = np.zeros_like(sim.grid)
@@ -142,8 +165,12 @@ if __name__ == "__main__":
         '// SL = {0:.4f}, Sc = {1:.4f}, deltaF = {2:.4f} mm, rhou = {3:.4f}, rhob = {4:.4f}'
         .format(sim.velocity[0], Sc, deltaF * 1000, rho[0], rho[-1]))
     # sim.show_stats
-    dataSaveDir = data_directory + 'XH2_{0:.2f}-{1}-Zst_{2:.2f}-Air-{3}-Premixed'.format(
-        XFF, diluent, Zst, args.TransportModel[0])
+    if (sim.transport_model == 'Multi' and args.EnableSoret[0]):
+        dataSaveDir = dataRootPath + 'XH2_{0:.2f}-{1}-Zst_{2:.2f}-Air-{3}-Soret'.format(
+            XFF, dilu, Zst, args.TransportModel[0])
+    else:
+        dataSaveDir = dataRootPath + 'XH2_{0:.2f}-{1}-Zst_{2:.2f}-Air-{3}'.format(
+            XFF, dilu, Zst, args.TransportModel[0])
     utils.plotFlamePNG(sim, gas, dataSaveDir)
 
     # For fuel and oxider stream
@@ -175,7 +202,7 @@ if __name__ == "__main__":
 
     # Generate Output
     width = 20.e-03
-    agN = 40
+    agN = 20
     # Considering equal momentum, rho U ^2 = const
     UO = agN * width / 4
     UF = UO * np.sqrt(rhoO / rhoF)
@@ -190,7 +217,7 @@ if __name__ == "__main__":
 
     # For Counterflow configuration
     # Comute the Extinction strain rates
-    exp_d_a, exp_u_a = -1. / 2., 1. / 2.
+    # exp_d_a, exp_u_a = -1. / 2., 1. / 2.
 
     # Set normalized initial strain rate
     alpha = [1.]
@@ -202,11 +229,11 @@ if __name__ == "__main__":
     # Indicator of iteration and the latest flame still burning
     iter, iter_last_burning = 0, 0
     # Init iter
-    iter_UO = 0.10  # m/s
+    iter_UO = 2.00  # m/s
     # Umiform increase
-    delta_iter_UO = 0.2
+    delta_iter_UO = 0.01
     delta_iter_UO_factor = 2.0
-    delta_iter_UO_min = 0.001
+    delta_iter_UO_min = 0.0001
     # Umiform increase
 
     restartFlag = True
@@ -226,7 +253,8 @@ if __name__ == "__main__":
         restartFlag=False,
         pathRootSave=dataSaveDir,
         velocityBalanceOption='momentum',
-        transportModel=args.TransportModel[0])
+        transportModel=args.TransportModel[0],
+        enableSoret=args.EnableSoret[0])
     UO_Array, ag_Array = [iter_UO], [iter_ag]
     Tmax_Array, xf_Array = [iter_Tmax], [iter_xf]
 
@@ -256,7 +284,8 @@ if __name__ == "__main__":
                 restartFlag=restartFlag,
                 pathRootSave=dataSaveDir,
                 velocityBalanceOption='momentum',
-                transportModel=args.TransportModel[0])
+                transportModel=args.TransportModel[0],
+                enableSoret=args.EnableSoret[0])
             # Runtime progress output
             print(
                 'Flame established at iter = {0} with iter_UO = {1}, Tf = {2}'.

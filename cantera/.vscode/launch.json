@@ -10,10 +10,10 @@
             "request": "launch",
             "program": "${file}",
             "args": [
-                "--Mech",  "./chem/DTUmech2019/DTU_DME_mech.xml",
-                "--Fuel",  "CH3OCH3",
-                "--EquivalenceRatio",  "1.0",
-                "--TransportModel", "Mix"
+                // "--Mech",  "./chem/DTUmech2019/DTU_DME_mech.xml",
+                // "--Fuel",  "CH3OCH3",
+                // "--EquivalenceRatio",  "1.0",
+                // // "--TransportModel", "Mix"
            ],
             "console": "integratedTerminal"
         },
